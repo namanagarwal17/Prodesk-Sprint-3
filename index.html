@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Explorer | API Hunter</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <header class="navbar">
+        <a href="#" class="logo">
+            <span class="logo-icon">GH</span>
+            github<span>.explorer</span>
+        </a>
+
+        <div class="api-status">
+            <span class="status-dot"></span>
+            GitHub REST API
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section class="hero">
+            <div class="eyebrow">THE API HUNTER · SPRINT 03</div>
+
+            <h1>
+                Discover developers.<br>
+                <span>Explore their work.</span>
+            </h1>
+
+            <p>
+                Search any GitHub username to explore their profile,
+                latest repositories and developer activity.
+            </p>
+        </section>
+
+        <section class="search-panel">
+
+            <div class="mode-row">
+                <span>SEARCH MODE</span>
+
+                <label class="toggle-label">
+                    Profile Search
+                    <input type="checkbox" id="battleToggle">
+                    <span class="toggle"></span>
+                    Battle Mode
+                </label>
+            </div>
+
+            <!-- Normal Search -->
+            <form id="searchForm" class="search-form">
+                <span class="prefix">@</span>
+
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Enter GitHub username (e.g. octocat)"
+                    required
+                >
+
+                <button type="submit" id="searchButton">
+                    Explore Profile →
+                </button>
+            </form>
+
+            <!-- Battle Search -->
+            <form id="battleForm" class="battle-form hidden">
+
+                <div>
+                    <label>FIRST DEVELOPER</label>
+                    <input
+                        type="text"
+                        id="usernameOne"
+                        placeholder="octocat"
+                        required
+                    >
+                </div>
+
+                <span class="versus">VS</span>
+
+                <div>
+                    <label>SECOND DEVELOPER</label>
+                    <input
+                        type="text"
+                        id="usernameTwo"
+                        placeholder="torvalds"
+                        required
+                    >
+                </div>
+
+                <button type="submit">Compare Developers →</button>
+
+            </form>
+
+            <p class="hint">
+                Try
+                <button type="button" class="example" data-example="octocat">octocat</button>
+                or
+                <button type="button" class="example" data-example="torvalds">torvalds</button>
+            </p>
+
+        </section>
+
+        <!-- Loading and Error Messages -->
+        <div id="feedback" class="feedback hidden" role="status" aria-live="polite"></div>
+
+        <!-- Results -->
+        <section id="results" class="results hidden">
+
+            <div class="section-heading">
+                <div>
+                    <div class="eyebrow">DEVELOPER OVERVIEW</div>
+                    <h2>Profile & Repositories</h2>
+                </div>
+
+                <span class="live-tag">● LIVE DATA</span>
+            </div>
+
+            <div id="profileGrid" class="profile-grid"></div>
+
+            <div id="battleSummary" class="battle-summary hidden"></div>
+
+            <div class="repo-heading">
+                <div>
+                    <div class="eyebrow">OPEN SOURCE ACTIVITY</div>
+                    <h2>Latest Repositories</h2>
+                </div>
+
+                <span id="repoCount"></span>
+            </div>
+
+            <div id="repoGrid" class="repo-grid"></div>
+
+        </section>
+
+        <!-- Initial Empty State -->
+        <section id="emptyState" class="empty-state">
+            <div class="empty-icon">&lt;/&gt;</div>
+
+            <h2>Your next discovery is one search away.</h2>
+
+            <p>
+                Enter a GitHub username above and the profile will appear here.
+            </p>
+        </section>
+
+    </main>
+
+    <footer>
+        <span>Built with HTML, CSS & JavaScript</span>
+        <span>Powered by GitHub REST API</span>
+    </footer>
+
+</body>
+</html>
